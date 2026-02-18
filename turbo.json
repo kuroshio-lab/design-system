@@ -1,0 +1,23 @@
+{
+  "version": "1",
+  "tasks": {
+    "build": {
+      "outputs": ["dist/**", ".next/**"],
+      "cache": false
+    },
+    "lint": {
+      "outputs": []
+    },
+    "type-check": {
+      "outputs": []
+    },
+    "test": {
+      "outputs": ["coverage/**"],
+      "cache": false
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    }
+  }
+}

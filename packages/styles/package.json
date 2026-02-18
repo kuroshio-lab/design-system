@@ -1,0 +1,36 @@
+{
+  "name": "@kuroshio/styles",
+  "version": "0.1.0",
+  "description": "Shared styling utilities and Tailwind configuration for Kuroshio Lab",
+  "private": false,
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./tailwind": "./tailwind.config.js",
+    "./postcss": "./postcss.config.js"
+  },
+  "files": [
+    "dist",
+    "tailwind.config.js",
+    "postcss.config.js"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "tailwindcss": "^3.4.0",
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.4.0"
+  }
+}
