@@ -1,4 +1,4 @@
-# @kuroshio/design-system
+# @kuroshio-lab/design-system
 
 An open-source design system and component library for Kuroshio Lab projects. Built with React, TypeScript, Radix UI, and Tailwind CSS.
 
@@ -6,9 +6,9 @@ An open-source design system and component library for Kuroshio Lab projects. Bu
 
 This monorepo contains three packages:
 
-- **[@kuroshio/ui](./packages/ui)** - Radix UI-based primitive components (Button, Card, Dialog, Form, etc.)
-- **[@kuroshio/components](./packages/components)** - Domain-specific components (ObservationCard, SpeciesSearch, MapComponent, etc.)
-- **[@kuroshio/styles](./packages/styles)** - Shared styling utilities, Tailwind configuration, and theme
+- **[@kuroshio-lab/ui](./packages/ui)** - Radix UI-based primitive components (Button, Card, Dialog, Form, etc.)
+- **[@kuroshio-lab/components](./packages/components)** - Domain-specific components (ObservationCard, SpeciesSearch, MapComponent, etc.)
+- **[@kuroshio-lab/styles](./packages/styles)** - Shared styling utilities, Tailwind configuration, and theme
 
 ## Quick Start
 
@@ -107,13 +107,13 @@ npm run build
 # 3. Publish to npm
 npm publish
 
-# 4. Publish @kuroshio/ui
+# 4. Publish @kuroshio-lab/ui
 cd packages/ui && npm publish
 
-# 5. Publish @kuroshio/components
+# 5. Publish @kuroshio-lab/components
 cd ../components && npm publish
 
-# 6. Publish @kuroshio/styles
+# 6. Publish @kuroshio-lab/styles
 cd ../styles && npm publish
 ```
 
@@ -123,34 +123,34 @@ cd ../styles && npm publish
 
 ```bash
 # Install from npm
-npm install @kuroshio/ui @kuroshio/components @kuroshio/styles
+npm install @kuroshio-lab/ui @kuroshio-lab/components @kuroshio-lab/styles
 ```
 
 ```typescript
 // src/app/layout.tsx
-import { tailwindConfig } from '@kuroshio/styles/tailwind';
+import { tailwindConfig } from '@kuroshio-lab/styles/tailwind';
 
 // src/components/page.tsx
-import { Button } from '@kuroshio/ui/button';
-import { Card } from '@kuroshio/ui/card';
-import { ObservationCard } from '@kuroshio/components';
+import { Button } from '@kuroshio-lab/ui/button';
+import { Card } from '@kuroshio-lab/ui/card';
+import { ObservationCard } from '@kuroshio-lab/components';
 ```
 
 ### In landing-page
 
 ```bash
-npm install @kuroshio/ui @kuroshio/styles
+npm install @kuroshio-lab/ui @kuroshio-lab/styles
 ```
 
 ### In ocean-data-dashboard
 
 ```bash
-npm install @kuroshio/ui @kuroshio/styles
+npm install @kuroshio-lab/ui @kuroshio-lab/styles
 ```
 
 ## Component APIs
 
-### @kuroshio/ui
+### @kuroshio-lab/ui
 
 All components are styled with Tailwind CSS and built on Radix UI primitives.
 
@@ -167,10 +167,10 @@ import {
   ScrollArea,
   Separator,
   Textarea,
-} from '@kuroshio/ui';
+} from '@kuroshio-lab/ui';
 ```
 
-### @kuroshio/components
+### @kuroshio-lab/components
 
 Domain-specific components from Kuroshio Lab projects.
 
@@ -181,15 +181,15 @@ import {
   SpeciesSearch,
   MapComponent,
   ShadcnDynamicForm,
-} from '@kuroshio/components';
+} from '@kuroshio-lab/components';
 ```
 
-### @kuroshio/styles
+### @kuroshio-lab/styles
 
 Shared styling utilities.
 
 ```typescript
-import { theme, cn } from '@kuroshio/styles';
+import { theme, cn } from '@kuroshio-lab/styles';
 
 // Use theme colors
 const color = theme.colors.primary;
@@ -221,9 +221,9 @@ Path aliases for importing from packages:
 ```json
 {
   "paths": {
-    "@kuroshio/ui": ["packages/ui/src/index.ts"],
-    "@kuroshio/components": ["packages/components/src/index.ts"],
-    "@kuroshio/styles": ["packages/styles/src/index.ts"]
+    "@kuroshio-lab/ui": ["packages/ui/src/index.ts"],
+    "@kuroshio-lab/components": ["packages/components/src/index.ts"],
+    "@kuroshio-lab/styles": ["packages/styles/src/index.ts"]
   }
 }
 ```
@@ -260,7 +260,7 @@ cd kuroshio-design-system/packages/ui
 npm link
 
 cd ../../../marine-species-tracker
-npm link @kuroshio/ui
+npm link @kuroshio-lab/ui
 ```
 
 ## License

@@ -2,7 +2,7 @@
 
 This document provides an overview of each package in the design system.
 
-## @kuroshio/ui
+## @kuroshio-lab/ui
 
 **Primitive UI components built with Radix UI and Tailwind CSS.**
 
@@ -29,13 +29,13 @@ Provides a consistent set of unstyled, accessible, composable React components t
 ### Installation
 
 ```bash
-npm install @kuroshio/ui
+npm install @kuroshio-lab/ui
 ```
 
 ### Usage
 
 ```typescript
-import { Button, Card, Input, Label } from '@kuroshio/ui';
+import { Button, Card, Input, Label } from '@kuroshio-lab/ui';
 
 export function MyForm() {
   return (
@@ -68,17 +68,17 @@ export * from './card';
 Also supports direct imports:
 
 ```typescript
-import { Button } from '@kuroshio/ui/button';
-import { Card } from '@kuroshio/ui/card';
+import { Button } from '@kuroshio-lab/ui/button';
+import { Card } from '@kuroshio-lab/ui/card';
 ```
 
-## @kuroshio/components
+## @kuroshio-lab/components
 
 **Domain-specific React components for Kuroshio Lab projects.**
 
 ### Purpose
 
-Reusable components specific to Kuroshio Lab's marine and oceanographic applications. These are higher-level components built using `@kuroshio/ui` primitives.
+Reusable components specific to Kuroshio Lab's marine and oceanographic applications. These are higher-level components built using `@kuroshio-lab/ui` primitives.
 
 ### Planned Components
 
@@ -115,7 +115,7 @@ layout/
 ### Installation
 
 ```bash
-npm install @kuroshio/components
+npm install @kuroshio-lab/components
 ```
 
 ### Usage
@@ -125,7 +125,7 @@ import {
   ObservationCard,
   SpeciesSearch,
   MapComponent
-} from '@kuroshio/components';
+} from '@kuroshio-lab/components';
 
 export function Dashboard() {
   return (
@@ -140,7 +140,7 @@ export function Dashboard() {
 
 ### Dependencies
 
-- `@kuroshio/ui` - UI primitives
+- `@kuroshio-lab/ui` - UI primitives
 - `react` ^18.2.0
 - `axios` - API calls
 - `react-hook-form` - Form handling
@@ -164,7 +164,7 @@ packages/components/src/
 └── index.ts                # Main exports
 ```
 
-## @kuroshio/styles
+## @kuroshio-lab/styles
 
 **Shared styling utilities, theme configuration, and Tailwind CSS setup.**
 
@@ -176,22 +176,22 @@ Centralizes theme, colors, typography, and styling utilities used across all pac
 
 ```typescript
 // Utilities
-export { cn } from '@kuroshio/styles';
+export { cn } from '@kuroshio-lab/styles';
 
 // Theme
-export { theme } from '@kuroshio/styles';
+export { theme } from '@kuroshio-lab/styles';
 ```
 
 ### Tailwind Configuration
 
 ```typescript
 // tailwind.config.js
-const kuroshioConfig = require('@kuroshio/styles/tailwind');
+const kuroshioConfig = require('@kuroshio-lab/styles/tailwind');
 
 module.exports = {
   content: [
     './src/**/*.{js,jsx,ts,tsx}',
-    'node_modules/@kuroshio/ui/dist/**/*.js',
+    'node_modules/@kuroshio-lab/ui/dist/**/*.js',
   ],
   theme: {
     extend: kuroshioConfig.theme.extend,
@@ -203,13 +203,13 @@ module.exports = {
 ### Installation
 
 ```bash
-npm install @kuroshio/styles
+npm install @kuroshio-lab/styles
 ```
 
 ### Usage
 
 ```typescript
-import { cn, theme } from '@kuroshio/styles';
+import { cn, theme } from '@kuroshio-lab/styles';
 
 // Merge Tailwind classes
 const className = cn(
@@ -257,19 +257,19 @@ Adds animations for Radix UI components:
 
 ```
 ┌─────────────────────────┐
-│  @kuroshio/styles       │
+│  @kuroshio-lab/styles       │
 │  (theme, utilities)     │
 └────────────┬────────────┘
              │ uses
              ▼
 ┌─────────────────────────┐
-│  @kuroshio/ui           │
+│  @kuroshio-lab/ui           │
 │  (primitives)           │
 └────────────┬────────────┘
              │ uses
              ▼
 ┌─────────────────────────┐
-│  @kuroshio/components   │
+│  @kuroshio-lab/components   │
 │  (domain components)    │
 └─────────────────────────┘
 ```
@@ -287,17 +287,17 @@ However, it's recommended to keep all packages at the same major.minor version f
 ## Migration Status
 
 ### marine-species-tracker
-- ✅ UI components ready in `@kuroshio/ui`
-- ⏳ Domain components (observation, species, map) pending migration to `@kuroshio/components`
+- ✅ UI components ready in `@kuroshio-lab/ui`
+- ⏳ Domain components (observation, species, map) pending migration to `@kuroshio-lab/components`
 
 ### landing-page
-- ✅ UI components ready in `@kuroshio/ui`
-- ✅ Styles ready in `@kuroshio/styles`
+- ✅ UI components ready in `@kuroshio-lab/ui`
+- ✅ Styles ready in `@kuroshio-lab/styles`
 - ⏳ Project-specific components (project-card) to be evaluated
 
 ### ocean-data-dashboard
-- ✅ UI components ready in `@kuroshio/ui`
-- ⏳ Chart components (TemperatureChart) pending migration to `@kuroshio/components`
+- ✅ UI components ready in `@kuroshio-lab/ui`
+- ⏳ Chart components (TemperatureChart) pending migration to `@kuroshio-lab/components`
 
 ## Future Enhancements
 

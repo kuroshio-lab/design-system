@@ -1,5 +1,5 @@
 {
-  "name": "@kuroshio/styles",
+  "name": "@kuroshio-lab/styles",
   "version": "0.1.0",
   "description": "Shared styling utilities and Tailwind configuration for Kuroshio Lab",
   "private": false,

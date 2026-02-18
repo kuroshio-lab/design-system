@@ -1,4 +1,4 @@
-# @kuroshio/styles
+# @kuroshio-lab/styles
 
 Shared styling utilities, design tokens, and Tailwind CSS configuration for Kuroshio Lab projects.
 
@@ -13,7 +13,7 @@ Shared styling utilities, design tokens, and Tailwind CSS configuration for Kuro
 ## Installation
 
 ```bash
-npm install @kuroshio/styles
+npm install @kuroshio-lab/styles
 ```
 
 ## Quick Start
@@ -21,7 +21,7 @@ npm install @kuroshio/styles
 ### Using Tokens in TypeScript
 
 ```typescript
-import { palette, theme, gradients } from '@kuroshio/styles';
+import { palette, theme, gradients } from '@kuroshio-lab/styles';
 
 const primaryColor = palette.primary[500]; // #0077BA
 const backgroundColor = palette.neutral['gray-100']; // #F3F6F7
@@ -44,7 +44,7 @@ function Card() {
 ### Using Class Name Utility
 
 ```typescript
-import { cn } from '@kuroshio/styles';
+import { cn } from '@kuroshio-lab/styles';
 
 function Button({ isActive, disabled }) {
   return (
@@ -122,7 +122,7 @@ import {
   opacity,       // Opacity levels
   theme,         // Default theme colors
   cn,            // Class name utility
-} from '@kuroshio/styles';
+} from '@kuroshio-lab/styles';
 ```
 
 ### Tokens Structure
@@ -143,12 +143,12 @@ tokens.opacity        // Opacity levels
 ### In your `tailwind.config.js`
 
 ```javascript
-const kuroshioConfig = require('@kuroshio/styles/tailwind');
+const kuroshioConfig = require('@kuroshio-lab/styles/tailwind');
 
 module.exports = {
   content: [
     './src/**/*.{js,jsx,ts,tsx}',
-    'node_modules/@kuroshio/ui/dist/**/*.js',
+    'node_modules/@kuroshio-lab/ui/dist/**/*.js',
   ],
   theme: {
     extend: kuroshioConfig.theme.extend,

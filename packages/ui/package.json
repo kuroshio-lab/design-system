@@ -1,5 +1,5 @@
 {
-  "name": "@kuroshio/ui",
+  "name": "@kuroshio-lab/ui",
   "version": "0.1.0",
   "description": "Radix UI-based component library for Kuroshio Lab",
   "private": false,

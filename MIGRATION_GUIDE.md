@@ -1,10 +1,10 @@
-# Migration Guide: Moving to @kuroshio/design-system
+# Migration Guide: Moving to @kuroshio-lab/design-system
 
 This guide helps you migrate existing Kuroshio Lab projects to use the shared design system.
 
 ## Overview
 
-Instead of maintaining components in each project, all shared UI components are now in `@kuroshio/design-system`. This reduces duplication and makes it easier to maintain consistent styling across projects.
+Instead of maintaining components in each project, all shared UI components are now in `@kuroshio-lab/design-system`. This reduces duplication and makes it easier to maintain consistent styling across projects.
 
 ## Step-by-Step Migration
 
@@ -12,7 +12,7 @@ Instead of maintaining components in each project, all shared UI components are 
 
 ```bash
 # Install the design system packages
-npm install @kuroshio/ui @kuroshio/components @kuroshio/styles
+npm install @kuroshio-lab/ui @kuroshio-lab/components @kuroshio-lab/styles
 
 # For local development, use the monorepo version
 npm install file:../kuroshio-design-system/packages/ui
@@ -28,30 +28,30 @@ Remove these files from your project:
 
 ```
 src/components/ui/
-├── badge.tsx          ✓ Remove (use @kuroshio/ui)
-├── button.tsx         ✓ Remove (use @kuroshio/ui)
-├── card.tsx           ✓ Remove (use @kuroshio/ui)
-├── dialog.tsx         ✓ Remove (use @kuroshio/ui)
-├── form.tsx           ✓ Remove (use @kuroshio/ui)
-├── input.tsx          ✓ Remove (use @kuroshio/ui)
-├── label.tsx          ✓ Remove (use @kuroshio/ui)
-├── scroll-area.tsx    ✓ Remove (use @kuroshio/ui)
-├── select.tsx         ✓ Remove (use @kuroshio/ui)
-├── separator.tsx      ✓ Remove (use @kuroshio/ui)
-└── textarea.tsx       ✓ Remove (use @kuroshio/ui)
+├── badge.tsx          ✓ Remove (use @kuroshio-lab/ui)
+├── button.tsx         ✓ Remove (use @kuroshio-lab/ui)
+├── card.tsx           ✓ Remove (use @kuroshio-lab/ui)
+├── dialog.tsx         ✓ Remove (use @kuroshio-lab/ui)
+├── form.tsx           ✓ Remove (use @kuroshio-lab/ui)
+├── input.tsx          ✓ Remove (use @kuroshio-lab/ui)
+├── label.tsx          ✓ Remove (use @kuroshio-lab/ui)
+├── scroll-area.tsx    ✓ Remove (use @kuroshio-lab/ui)
+├── select.tsx         ✓ Remove (use @kuroshio-lab/ui)
+├── separator.tsx      ✓ Remove (use @kuroshio-lab/ui)
+└── textarea.tsx       ✓ Remove (use @kuroshio-lab/ui)
 ```
 
 #### For Domain Components
 
-Move these to `@kuroshio/components` (if shared) or keep project-specific ones:
+Move these to `@kuroshio-lab/components` (if shared) or keep project-specific ones:
 
 ```
 src/components/
-├── ObservationCard.tsx           → @kuroshio/components or keep
-├── ObservationModal.tsx          → @kuroshio/components or keep
-├── SpeciesSearch.tsx             → @kuroshio/components or keep
-├── MapComponent.tsx              → @kuroshio/components or keep
-├── ShadcnDynamicForm.tsx         → @kuroshio/components or keep
+├── ObservationCard.tsx           → @kuroshio-lab/components or keep
+├── ObservationModal.tsx          → @kuroshio-lab/components or keep
+├── SpeciesSearch.tsx             → @kuroshio-lab/components or keep
+├── MapComponent.tsx              → @kuroshio-lab/components or keep
+├── ShadcnDynamicForm.tsx         → @kuroshio-lab/components or keep
 └── [project-specific].tsx        ✓ Keep (not in design system yet)
 ```
 
@@ -70,8 +70,8 @@ import { ObservationCard } from './ObservationCard';
 
 ```typescript
 // marine-species-tracker/src/components/page.tsx
-import { Button, Card } from '@kuroshio/ui';
-import { ObservationCard } from '@kuroshio/components';
+import { Button, Card } from '@kuroshio-lab/ui';
+import { ObservationCard } from '@kuroshio-lab/components';
 ```
 
 ### Phase 4: Update Styling Configuration
@@ -85,8 +85,8 @@ Update your `tailwind.config.js` to include design system components:
 module.exports = {
   content: [
     './src/**/*.{js,jsx,ts,tsx}',
-    './node_modules/@kuroshio/ui/dist/**/*.js',
-    './node_modules/@kuroshio/components/dist/**/*.js',
+    './node_modules/@kuroshio-lab/ui/dist/**/*.js',
+    './node_modules/@kuroshio-lab/components/dist/**/*.js',
   ],
   // Extend with your project-specific theme
   theme: {
@@ -103,7 +103,7 @@ module.exports = {
 Or use the shared config:
 
 ```javascript
-const kuroshioConfig = require('@kuroshio/styles/tailwind');
+const kuroshioConfig = require('@kuroshio-lab/styles/tailwind');
 
 module.exports = {
   ...kuroshioConfig,
@@ -142,7 +142,7 @@ npm run dev
 
 1. Remove `src/components/ui/` directory entirely
 2. Update imports in all files using UI components
-3. Move custom components to `@kuroshio/components` if they should be shared
+3. Move custom components to `@kuroshio-lab/components` if they should be shared
 4. Update `tailwind.config.js`
 
 **Estimated effort:** 2-3 hours
@@ -150,7 +150,7 @@ npm run dev
 ### landing-page
 
 1. Remove or consolidate duplicate UI components
-2. Use `@kuroshio/ui` for shared primitives
+2. Use `@kuroshio-lab/ui` for shared primitives
 3. Keep `project-card.tsx` (project-specific)
 4. Update `tailwind.config.js`
 
@@ -158,8 +158,8 @@ npm run dev
 
 ### ocean-data-dashboard
 
-1. Consider extracting chart components to `@kuroshio/components`
-2. Use `@kuroshio/ui` for UI primitives
+1. Consider extracting chart components to `@kuroshio-lab/components`
+2. Use `@kuroshio-lab/ui` for UI primitives
 3. Update styling configuration
 
 **Estimated effort:** 1-2 hours
@@ -178,7 +178,7 @@ If your project styles UI components differently:
 
 If the design system doesn't have a component you need:
 
-1. Create it in `@kuroshio/components` and submit a PR
+1. Create it in `@kuroshio-lab/components` and submit a PR
 2. Or keep it local until it's added
 
 ### Version Mismatches
@@ -186,7 +186,7 @@ If the design system doesn't have a component you need:
 Ensure all projects use the same version:
 
 ```bash
-npm install @kuroshio/ui@^0.1.0 @kuroshio/components@^0.1.0
+npm install @kuroshio-lab/ui@^0.1.0 @kuroshio-lab/components@^0.1.0
 ```
 
 ## Reverting Changes
@@ -195,7 +195,7 @@ If you need to revert:
 
 ```bash
 # Uninstall design system packages
-npm uninstall @kuroshio/ui @kuroshio/components @kuroshio/styles
+npm uninstall @kuroshio-lab/ui @kuroshio-lab/components @kuroshio-lab/styles
 
 # Restore component files from git history
 git checkout src/components/ui/
@@ -205,7 +205,7 @@ git checkout src/components/ui/
 
 ### Import Resolution
 
-**Error:** `Cannot find module '@kuroshio/ui'`
+**Error:** `Cannot find module '@kuroshio-lab/ui'`
 
 **Solution:**
 - Ensure packages are installed: `npm install`

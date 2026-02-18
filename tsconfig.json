@@ -14,9 +14,9 @@
     "declarationMap": true,
     "sourceMap": true,
     "paths": {
-      "@kuroshio/ui": ["packages/ui/src/index.ts"],
-      "@kuroshio/components": ["packages/components/src/index.ts"],
-      "@kuroshio/styles": ["packages/styles/src/index.ts"]
+      "@kuroshio-lab/ui": ["packages/ui/src/index.ts"],
+      "@kuroshio-lab/components": ["packages/components/src/index.ts"],
+      "@kuroshio-lab/styles": ["packages/styles/src/index.ts"]
     }
   },
   "include": ["packages/**/*.ts", "packages/**/*.tsx"],
