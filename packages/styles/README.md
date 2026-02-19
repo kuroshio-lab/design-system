@@ -21,11 +21,11 @@ npm install @kuroshio-lab/styles
 ### Using Tokens in TypeScript
 
 ```typescript
-import { palette, theme, gradients } from '@kuroshio-lab/styles';
+import { palette, theme, gradients } from "@kuroshio-lab/styles";
 
 const primaryColor = palette.primary[500]; // #0077BA
-const backgroundColor = palette.neutral['gray-100']; // #F3F6F7
-const gradient = gradients['kerama-depth'];
+const backgroundColor = palette.neutral["gray-100"]; // #F3F6F7
+const gradient = gradients["kerama-depth"];
 ```
 
 ### Using in Tailwind CSS
@@ -114,28 +114,28 @@ Okinawa Dawn: Linear 140deg, Ocean → Coral
 
 ```typescript
 import {
-  tokens,        // All design tokens
-  palette,       // Organized color palette
-  gradients,     // Gradient definitions
-  radii,         // Border radius values
-  spacing,       // Spacing scale
-  opacity,       // Opacity levels
-  theme,         // Default theme colors
-  cn,            // Class name utility
-} from '@kuroshio-lab/styles';
+  tokens, // All design tokens
+  palette, // Organized color palette
+  gradients, // Gradient definitions
+  radii, // Border radius values
+  spacing, // Spacing scale
+  opacity, // Opacity levels
+  theme, // Default theme colors
+  cn, // Class name utility
+} from "@kuroshio-lab/styles";
 ```
 
 ### Tokens Structure
 
 ```typescript
-tokens.brand          // Primary colors
-tokens.neutral        // Gray colors
-tokens.accent         // Eco, coral, sand
-tokens.semantic       // Success, warning, error
-tokens.gradient       // Named gradients
-tokens.radii          // Border radius values
-tokens.spacing        // Spacing scale
-tokens.opacity        // Opacity levels
+tokens.brand; // Primary colors
+tokens.neutral; // Gray colors
+tokens.accent; // Eco, coral, sand
+tokens.semantic; // Success, warning, error
+tokens.gradient; // Named gradients
+tokens.radii; // Border radius values
+tokens.spacing; // Spacing scale
+tokens.opacity; // Opacity levels
 ```
 
 ## Tailwind Integration
@@ -143,12 +143,12 @@ tokens.opacity        // Opacity levels
 ### In your `tailwind.config.js`
 
 ```javascript
-const kuroshioConfig = require('@kuroshio-lab/styles/tailwind');
+const kuroshioConfig = require("@kuroshio-lab/styles/tailwind");
 
 module.exports = {
   content: [
-    './src/**/*.{js,jsx,ts,tsx}',
-    'node_modules/@kuroshio-lab/ui/dist/**/*.js',
+    "./src/**/*.{js,jsx,ts,tsx}",
+    "node_modules/@kuroshio-lab/ui/dist/**/*.js",
   ],
   theme: {
     extend: kuroshioConfig.theme.extend,

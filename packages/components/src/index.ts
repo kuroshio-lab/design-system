@@ -1,9 +1,29 @@
-// Domain-specific components
-// Export components as they are added
+// Domain-specific components for Kuroshio Lab applications
 
-// Example structure for marine species tracker components
-// export * from './observation/ObservationCard';
-// export * from './observation/ObservationModal';
-// export * from './species/SpeciesSearch';
-// export * from './map/MapComponent';
-// export * from './forms/ShadcnDynamicForm';
+// Observation components
+export {
+  ObservationCard,
+  MiniObservationCard,
+  ObservationModal,
+  ObservationFilterAndSort,
+  type Observation,
+  type FormField,
+} from "./observation";
+
+// Species search
+export { SpeciesSearch, type SpeciesSearchResult } from "./species";
+
+// Header
+export { Header } from "./header";
+
+// Loaders
+export { Loader, GlobalLoader } from "./loaders";
+
+// User components and provider
+export {
+  UserProvider,
+  useUser,
+  UserRoleBadge,
+  UserObservationSection,
+  type User,
+} from "./user";
