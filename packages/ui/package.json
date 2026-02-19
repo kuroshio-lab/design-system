@@ -1,6 +1,6 @@
 {
   "name": "@kuroshio-lab/ui",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "description": "Radix UI-based component library for Kuroshio Lab",
   "private": false,
   "license": "MIT",
@@ -60,7 +60,8 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && npm run flatten-dist",
+    "flatten-dist": "node -e \"const fs = require('fs'); const path = require('path'); const src = 'dist/ui/src'; if(fs.existsSync(src)) { fs.readdirSync(src).forEach(f => fs.copyFileSync(path.join(src, f), path.join('dist', f))); } const stylessrc = 'dist/styles'; if(fs.existsSync(stylessrc)) { fs.rmSync(stylessrc, { recursive: true }); }\"",
     "dev": "tsc --watch",
     "lint": "prettier --check src",
     "type-check": "tsc --noEmit"
