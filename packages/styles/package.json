@@ -1,6 +1,6 @@
 {
   "name": "@kuroshio-lab/styles",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Shared styling utilities and Tailwind configuration for Kuroshio Lab",
   "private": false,
   "license": "MIT",
