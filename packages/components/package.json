@@ -16,7 +16,8 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && npm run flatten-dist",
+    "flatten-dist": "node -e \"const fs = require('fs'); const path = require('path'); const src = 'dist/components/src'; if(fs.existsSync(src)) { fs.readdirSync(src).forEach(d => { const srcPath = path.join(src, d); if(fs.statSync(srcPath).isDirectory()) { fs.readdirSync(srcPath).forEach(f => fs.copyFileSync(path.join(srcPath, f), path.join('dist', f))); } }); }\"",
     "dev": "tsc --watch",
     "lint": "prettier --check src",
     "type-check": "tsc --noEmit"
