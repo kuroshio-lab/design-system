@@ -195,19 +195,21 @@ function UserObservationSection({
         <p className="p-4">No observations found. Start by adding a new one!</p>
       );
     }
-    return displayObservations.map((observation: Observation, index: number) => {
-      if (!ObservationCardComponent) return null;
-      return (
-        <ObservationCardComponent
-          key={observation.id}
-          observation={observation}
-          onSelectObservation={handleSelectObservation}
-          onDeleteObservation={handleDeleteObservation}
-          onEditObservationClick={handleEditObservationClick}
-          className={index < displayObservations.length - 1 ? "mb-2" : ""}
-        />
-      );
-    });
+    return displayObservations.map(
+      (observation: Observation, index: number) => {
+        if (!ObservationCardComponent) return null;
+        return (
+          <ObservationCardComponent
+            key={observation.id}
+            observation={observation}
+            onSelectObservation={handleSelectObservation}
+            onDeleteObservation={handleDeleteObservation}
+            onEditObservationClick={handleEditObservationClick}
+            className={index < displayObservations.length - 1 ? "mb-2" : ""}
+          />
+        );
+      },
+    );
   };
 
   return (
@@ -252,7 +254,9 @@ function UserObservationSection({
               {ObservationFilterAndSortComponent && (
                 <ObservationFilterAndSortComponent
                   observations={observations}
-                  onFilteredObservationsChange={handleFilteredObservationsChange}
+                  onFilteredObservationsChange={
+                    handleFilteredObservationsChange
+                  }
                 />
               )}
             </CardTitle>
@@ -271,7 +275,9 @@ function UserObservationSection({
           onObservationUpserted={handleObservationUpserted}
           mode={modalMode}
           observation={modalMode === "edit" ? selectedObservation : null}
-          onSubmit={modalMode === "edit" ? onUpdateObservation : onCreateObservation}
+          onSubmit={
+            modalMode === "edit" ? onUpdateObservation : onCreateObservation
+          }
         />
       )}
     </div>

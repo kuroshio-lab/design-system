@@ -16,7 +16,11 @@ export interface User {
   id: number;
   username: string;
   email: string;
-  role: "hobbyist" | "researcher_pending" | "researcher_community" | "researcher_institutional";
+  role:
+    | "hobbyist"
+    | "researcher_pending"
+    | "researcher_community"
+    | "researcher_institutional";
   firstName?: string;
   lastName?: string;
   bio?: string;

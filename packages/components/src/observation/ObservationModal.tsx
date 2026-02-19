@@ -48,7 +48,9 @@ interface ObservationModalProps {
   onObservationUpserted: () => void;
   mode: "add" | "edit";
   observation?: Observation | null;
-  onSpeciesSearch?: (query: string) => Promise<Array<{ speciesName: string; commonName: string }>>;
+  onSpeciesSearch?: (
+    query: string,
+  ) => Promise<Array<{ speciesName: string; commonName: string }>>;
   onSubmit?: (data: any) => Promise<void>;
   SpeciesSearchComponent?: React.ComponentType<any>;
   useUserHook?: () => any;
@@ -250,29 +252,28 @@ export default function ObservationModal({
     speciesName: string;
     commonName: string;
   } | null>(null);
-  const [defaultValues, setDefaultValues] = useState<
-    Partial<ObservationFormData> | undefined
-  >(undefined);
+
+  const defaultFormValues: ObservationFormData = {
+    speciesName: "",
+    commonName: undefined,
+    locationName: "",
+    latitude: 0,
+    longitude: 0,
+    observationDatetime: new Date().toISOString().substring(0, 16),
+    depthMin: undefined,
+    depthMax: undefined,
+    bathymetry: undefined,
+    temperature: undefined,
+    visibility: undefined,
+    notes: undefined,
+    sex: "unknown" as const,
+  };
 
   const form = useForm<ObservationFormData>({
     resolver: zodResolver(
       observationFormSchema,
     ) as Resolver<ObservationFormData>,
-    defaultValues: defaultValues || {
-      speciesName: "",
-      commonName: undefined,
-      locationName: "",
-      latitude: 0,
-      longitude: 0,
-      observationDatetime: new Date().toISOString().substring(0, 16),
-      depthMin: undefined,
-      depthMax: undefined,
-      bathymetry: undefined,
-      temperature: undefined,
-      visibility: undefined,
-      notes: undefined,
-      sex: "unknown" as const,
-    },
+    defaultValues: defaultFormValues,
   });
 
   useEffect(() => {
@@ -282,7 +283,7 @@ export default function ObservationModal({
         commonName: observation.commonName || "",
       };
       setSelectedSpecies(species);
-      const values = {
+      const values: ObservationFormData = {
         speciesName: observation.speciesName,
         commonName: observation.commonName ?? undefined,
         locationName: observation.locationName,
@@ -292,36 +293,23 @@ export default function ObservationModal({
           ? new Date(observation.observationDatetime)
               .toISOString()
               .substring(0, 16)
-          : undefined,
+          : "",
         depthMin: observation.depthMin ?? undefined,
         depthMax: observation.depthMax ?? undefined,
         bathymetry: observation.bathymetry ?? undefined,
         temperature: observation.temperature ?? undefined,
         visibility: observation.visibility ?? undefined,
         notes: observation.notes ?? undefined,
-        sex: observation.sex ?? undefined,
+        sex: (observation.sex ?? "unknown") as
+          | "male"
+          | "female"
+          | "unknown"
+          | undefined,
       };
-      setDefaultValues(values);
       form.reset(values);
     } else {
       setSelectedSpecies(null);
-      const values = {
-        speciesName: "",
-        commonName: undefined,
-        locationName: "",
-        latitude: 0,
-        longitude: 0,
-        observationDatetime: new Date().toISOString().substring(0, 16),
-        depthMin: undefined,
-        depthMax: undefined,
-        bathymetry: undefined,
-        temperature: undefined,
-        visibility: undefined,
-        notes: undefined,
-        sex: "unknown" as const,
-      };
-      setDefaultValues(values);
-      form.reset(values);
+      form.reset(defaultFormValues);
     }
   }, [mode, observation, isOpen, form]);
 
@@ -377,7 +365,10 @@ export default function ObservationModal({
                             onChange={(species: any) => {
                               setSelectedSpecies(species);
                               if (species) {
-                                form.setValue("speciesName", species.speciesName);
+                                form.setValue(
+                                  "speciesName",
+                                  species.speciesName,
+                                );
                                 form.setValue(
                                   "commonName",
                                   species.commonName || null,
