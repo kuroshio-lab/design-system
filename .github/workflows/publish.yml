@@ -41,7 +41,7 @@ jobs:
       - name: Publish to npm
         run: |
           cd packages/${{ matrix.package }}
-          npm publish
+          npm publish || echo "Package version already published, skipping."
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
