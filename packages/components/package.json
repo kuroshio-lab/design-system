@@ -1,23 +1,22 @@
 {
   "name": "@kuroshio-lab/components",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Domain-specific React components for Kuroshio Lab projects",
   "private": false,
   "license": "MIT",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/components/src/index.js",
+  "types": "./dist/components/src/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "import": "./dist/components/src/index.js",
+      "types": "./dist/components/src/index.d.ts"
     }
   },
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "tsc && npm run flatten-dist",
-    "flatten-dist": "node -e \"const fs = require('fs'); const path = require('path'); const src = 'dist/components/src'; if(fs.existsSync(src)) { fs.readdirSync(src).forEach(d => { const srcPath = path.join(src, d); if(fs.statSync(srcPath).isDirectory()) { fs.readdirSync(srcPath).forEach(f => fs.copyFileSync(path.join(srcPath, f), path.join('dist', f))); } }); }\"",
+    "build": "tsc",
     "dev": "tsc --watch",
     "lint": "prettier --check src",
     "type-check": "tsc --noEmit"
