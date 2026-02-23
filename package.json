@@ -23,11 +23,24 @@
     "lint": "turbo lint",
     "type-check": "turbo type-check",
     "test": "turbo test",
-    "clean": "turbo clean && rm -rf node_modules"
+    "clean": "turbo clean && rm -rf node_modules",
+    "storybook": "storybook dev --port 6006",
+    "storybook:build": "storybook build --output-dir storybook-static"
   },
   "devDependencies": {
+    "@storybook/addon-a11y": "^8.6.0",
+    "@storybook/addon-essentials": "^8.6.0",
+    "@storybook/addon-interactions": "^8.6.0",
+    "@storybook/react": "^8.6.0",
+    "@storybook/react-vite": "^8.6.0",
+    "@vitejs/plugin-react": "^4.3.0",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.32",
     "prettier": "^3.8.1",
+    "storybook": "^8.6.0",
+    "tailwindcss": "^3.4.0",
     "turbo": "^2.0.0",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "vite": "^5.4.0"
   }
 }
