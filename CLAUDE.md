@@ -131,6 +131,7 @@ MyComponent.displayName = 'MyComponent';
 3. **semantic-release.yml** - Disabled (optional for future)
 
 ### Publishing Process
+Don't forget when modifying one of packes/UI or component to bump a version before publishing it to avoir conflict
 The standard flow:
 1. Make changes and ensure tests pass: `npm run build && npm run type-check && npm run lint`
 2. Use `./scripts/release.sh` to bump version and create git tags
