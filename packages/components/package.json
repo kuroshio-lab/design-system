@@ -1,6 +1,6 @@
 {
   "name": "@kuroshio-lab/components",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Domain-specific React components for Kuroshio Lab projects",
   "private": false,
   "license": "MIT",
