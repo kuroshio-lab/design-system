@@ -56,7 +56,9 @@ export default function UserRoleBadge({
 
   if (variant === "inline") {
     return (
-      <div className={`flex items-center gap-2 px-3 h-9 rounded-sm ${config.textColor}`}>
+      <div
+        className={`flex items-center gap-2 px-3 h-9 rounded-sm ${config.textColor}`}
+      >
         <span className="text-base leading-none">{config.icon}</span>
         <span className="text-xs font-semibold">{config.shortLabel}</span>
       </div>

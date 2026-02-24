@@ -122,7 +122,6 @@ export default function Header({
 
             {/* RIGHT SECTION: Unified glass command bar */}
             <div className="flex items-center p-1 bg-white/5 rounded-xl border border-white/10 backdrop-blur-xl shadow-inner">
-
               {/* Role badge — inline, inherits container glass */}
               {user && !loading && UserRoleBadgeComponent && (
                 <>
@@ -207,7 +206,6 @@ export default function Header({
                   </Button>
                 </>
               )}
-
             </div>
           </div>
         </div>

@@ -9,7 +9,16 @@ const meta: Meta<typeof Button> = {
   argTypes: {
     variant: {
       control: { type: "select" },
-      options: ["default", "edit", "delete", "addingObs", "actions", "signOut", "glass", "glassDanger"],
+      options: [
+        "default",
+        "edit",
+        "delete",
+        "addingObs",
+        "actions",
+        "signOut",
+        "glass",
+        "glassDanger",
+      ],
     },
     size: {
       control: { type: "select" },
@@ -72,7 +81,9 @@ export const Glass: Story = {
   },
   decorators: [
     (Story) => (
-      <div style={{ background: "#003A63", padding: "2rem", borderRadius: "12px" }}>
+      <div
+        style={{ background: "#003A63", padding: "2rem", borderRadius: "12px" }}
+      >
         <Story />
       </div>
     ),
@@ -86,7 +97,9 @@ export const GlassDanger: Story = {
   },
   decorators: [
     (Story) => (
-      <div style={{ background: "#003A63", padding: "2rem", borderRadius: "12px" }}>
+      <div
+        style={{ background: "#003A63", padding: "2rem", borderRadius: "12px" }}
+      >
         <Story />
       </div>
     ),
@@ -133,10 +146,22 @@ export const AllVariants: Story = {
           <Button variant="addingObs">Add Obs</Button>
           <Button variant="actions">Actions</Button>
           <Button variant="signOut">Sign Out</Button>
-          <div style={{ background: "#003A63", padding: "4px 8px", borderRadius: "8px" }}>
+          <div
+            style={{
+              background: "#003A63",
+              padding: "4px 8px",
+              borderRadius: "8px",
+            }}
+          >
             <Button variant="glass">Glass</Button>
           </div>
-          <div style={{ background: "#003A63", padding: "4px 8px", borderRadius: "8px" }}>
+          <div
+            style={{
+              background: "#003A63",
+              padding: "4px 8px",
+              borderRadius: "8px",
+            }}
+          >
             <Button variant="glassDanger">Glass Danger</Button>
           </div>
         </div>
