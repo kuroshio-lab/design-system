@@ -11,15 +11,16 @@ import { cn } from "@kuroshio-lab/styles";
 // For now, they're referenced as they would be imported
 export interface Observation {
   id: number;
+  userId?: number | null;
   speciesName: string;
-  commonName?: string;
+  commonName?: string | null;
   locationName: string;
   location: {
     type: "Point";
     coordinates: [number, number];
   };
   observationDatetime: string;
-  image?: string;
+  image?: string | null;
   depthMin?: number | null;
   depthMax?: number | null;
   bathymetry?: number | null;
@@ -29,9 +30,10 @@ export interface Observation {
   sex?: string | null;
   source: string;
   validated?: "validated" | "pending" | "rejected" | null;
-  username?: string;
-  machineObservation?: string;
-  createdAt?: string;
+  username?: string | null;
+  machineObservation?: string | null;
+  createdAt?: string | null;
+  updatedAt?: string | null;
 }
 
 interface ObservationCardProps {
