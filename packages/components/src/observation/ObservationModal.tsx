@@ -344,84 +344,86 @@ export default function ObservationModal({
           <DialogTitle>{dialogTitle}</DialogTitle>
           <DialogDescription>{dialogDescription}</DialogDescription>
         </DialogHeader>
-        <ScrollArea className="flex-1 min-h-0 p-6">
-          {(mode === "add" || (mode === "edit" && observation)) && (
-            // eslint-disable-next-line react/jsx-props-no-spreading
-            <Form {...form}>
-              <form
-                onSubmit={form.handleSubmit(onSubmit)}
-                className="space-y-6"
-              >
-                <ShadcnFormField
-                  control={form.control}
-                  name="speciesName"
-                  render={({ field: formField }) => (
-                    <FormItem>
-                      <FormLabel>Species *</FormLabel>
-                      <FormControl>
-                        {SpeciesSearchComponent ? (
-                          <SpeciesSearchComponent
-                            value={selectedSpecies}
-                            onChange={(species: any) => {
-                              setSelectedSpecies(species);
-                              if (species) {
-                                form.setValue(
-                                  "speciesName",
-                                  species.speciesName,
-                                );
-                                form.setValue(
-                                  "commonName",
-                                  species.commonName || null,
-                                );
-                              } else {
-                                form.setValue("speciesName", "");
-                                form.setValue("commonName", null);
-                              }
-                            }}
-                            onBlur={formField.onBlur}
-                            disabled={loading}
-                            placeholder="Search for species by scientific or common name..."
-                            error={!!form.formState.errors.speciesName}
-                          />
-                        ) : (
-                          <Input
-                            placeholder="Species search component not provided"
-                            disabled
-                          />
-                        )}
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                {observationFormFields.map((field: FormField) => (
+        <ScrollArea className="flex-1 min-h-0 h-full">
+          <div className="p-6">
+            {(mode === "add" || (mode === "edit" && observation)) && (
+              // eslint-disable-next-line react/jsx-props-no-spreading
+              <Form {...form}>
+                <form
+                  onSubmit={form.handleSubmit(onSubmit)}
+                  className="space-y-6"
+                >
                   <ShadcnFormField
-                    key={field.name}
                     control={form.control}
-                    name={field.name as FieldPath<ObservationFormData>}
+                    name="speciesName"
                     render={({ field: formField }) => (
                       <FormItem>
-                        <FormLabel>
-                          {field.label}
-                          {!field.optional && " *"}
-                        </FormLabel>
+                        <FormLabel>Species *</FormLabel>
                         <FormControl>
-                          {renderFieldControl(field, formField, loading)}
+                          {SpeciesSearchComponent ? (
+                            <SpeciesSearchComponent
+                              value={selectedSpecies}
+                              onChange={(species: any) => {
+                                setSelectedSpecies(species);
+                                if (species) {
+                                  form.setValue(
+                                    "speciesName",
+                                    species.speciesName,
+                                  );
+                                  form.setValue(
+                                    "commonName",
+                                    species.commonName || null,
+                                  );
+                                } else {
+                                  form.setValue("speciesName", "");
+                                  form.setValue("commonName", null);
+                                }
+                              }}
+                              onBlur={formField.onBlur}
+                              disabled={loading}
+                              placeholder="Search for species by scientific or common name..."
+                              error={!!form.formState.errors.speciesName}
+                            />
+                          ) : (
+                            <Input
+                              placeholder="Species search component not provided"
+                              disabled
+                            />
+                          )}
                         </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
-                ))}
-                {error && (
-                  <p className="text-red-500 text-sm text-center">{error}</p>
-                )}
-                <Button type="submit" className="w-full" disabled={loading}>
-                  {loading ? "Processing..." : submitButtonText}
-                </Button>
-              </form>
-            </Form>
-          )}
+                  {observationFormFields.map((field: FormField) => (
+                    <ShadcnFormField
+                      key={field.name}
+                      control={form.control}
+                      name={field.name as FieldPath<ObservationFormData>}
+                      render={({ field: formField }) => (
+                        <FormItem>
+                          <FormLabel>
+                            {field.label}
+                            {!field.optional && " *"}
+                          </FormLabel>
+                          <FormControl>
+                            {renderFieldControl(field, formField, loading)}
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  ))}
+                  {error && (
+                    <p className="text-red-500 text-sm text-center">{error}</p>
+                  )}
+                  <Button type="submit" className="w-full" disabled={loading}>
+                    {loading ? "Processing..." : submitButtonText}
+                  </Button>
+                </form>
+              </Form>
+            )}
+          </div>
         </ScrollArea>
       </DialogContent>
     </Dialog>
