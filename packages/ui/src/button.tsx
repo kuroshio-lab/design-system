@@ -30,6 +30,10 @@ const buttonVariants = cva(
           "bg-brand-primary-700 text-brand-primary-100 rounded-xl hover:bg-brand-primary-500 transition-colors shadow-sm",
         signOut:
           "bg-neutral-gray-500/20 text-neutral-gray-300 rounded-xl hover:bg-neutral-gray-700/20 transition-colors shadow-sm border border-neutral-gray-500/10",
+        glass:
+          "rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 text-white shadow-sm hover:bg-white/20 transition-all duration-200",
+        glassDanger:
+          "rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 text-white/70 shadow-sm hover:bg-white/20 hover:text-[#FF6F59] transition-all duration-200",
       },
       size: {
         default: "h-9 px-4 py-2",

@@ -83,7 +83,7 @@ export default function Header({
                   <span className="bg-gradient-to-r from-white via-brand-primary-100 to-brand-primary-300 bg-clip-text text-transparent">
                     Kuroshio-Lab
                   </span>
-                  <span className="ml-2 text-lg font-light text-brand-primary-100/60 hidden md:inline">
+                  <span className="ml-2 text-lg font-light text-brand-primary-100/60">
                     Marine Species Observation Tracker
                   </span>
                 </h1>
@@ -92,7 +92,7 @@ export default function Header({
                   Empower divers, biologists, and hobbyists...
                 </p>
 
-                {/* User Status with Role Badge */}
+                {/* User Status */}
                 {user && !loading && (
                   <div className="flex items-center gap-2 mt-2">
                     <div className="flex items-center gap-2 bg-black/20 px-2 py-0.5 rounded-full border border-white/5">
@@ -106,12 +106,6 @@ export default function Header({
                         Operator: {user.username}
                       </span>
                     </div>
-                    {/* Mobile: Compact badge */}
-                    {UserRoleBadgeComponent && (
-                      <div className="lg:hidden">
-                        <UserRoleBadgeComponent user={user} variant="compact" />
-                      </div>
-                    )}
                   </div>
                 )}
 
@@ -126,90 +120,94 @@ export default function Header({
               </div>
             </div>
 
-            {/* RIGHT SECTION: Navigation Actions */}
-            <div className="flex items-center gap-3">
-              {/* Desktop: Full role badge */}
+            {/* RIGHT SECTION: Unified glass command bar */}
+            <div className="flex items-center p-1 bg-white/5 rounded-xl border border-white/10 backdrop-blur-xl shadow-inner">
+
+              {/* Role badge — inline, inherits container glass */}
               {user && !loading && UserRoleBadgeComponent && (
-                <div className="hidden lg:block">
-                  <UserRoleBadgeComponent user={user} variant="full" />
-                </div>
+                <>
+                  <UserRoleBadgeComponent user={user} variant="inline" />
+                  <div className="w-px h-5 bg-white/10 mx-0.5" />
+                </>
               )}
 
-              {/* Glassmorphism Action Group */}
-              <div className="flex items-center p-1 bg-white/5 rounded-lg border border-white/10 backdrop-blur-xl shadow-inner">
-                <Button
-                  onClick={() => setIsFilterModalOpen(true)}
-                  variant="ghost"
-                  className="text-white hover:bg-white/10 hover:text-brand-primary-300 transition-all gap-2 px-4 h-9"
+              {/* Filters */}
+              <Button
+                onClick={() => setIsFilterModalOpen(true)}
+                variant="glass"
+                className="gap-2 px-3 h-9"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-4 w-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-4 w-4"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"
-                    />
-                  </svg>
-                  <span className="hidden sm:inline font-medium">Filters</span>
-                </Button>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"
+                  />
+                </svg>
+                <span className="font-medium">Filters</span>
+              </Button>
 
-                <div className="w-px h-5 bg-white/10 mx-1" />
+              <div className="w-px h-5 bg-white/10 mx-0.5" />
 
-                <Button
-                  // eslint-disable-next-line no-alert
-                  onClick={() => alert("Export functionality ready soon.")}
-                  variant="ghost"
-                  className="text-white hover:bg-white/10 hover:text-brand-primary-300 transition-all gap-2 px-4 h-9"
+              {/* Export */}
+              <Button
+                // eslint-disable-next-line no-alert
+                onClick={() => alert("Export functionality ready soon.")}
+                variant="glass"
+                className="gap-2 px-3 h-9"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-4 w-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-4 w-4"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-                    />
-                  </svg>
-                  <span className="hidden sm:inline font-medium">Export</span>
-                </Button>
-              </div>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                  />
+                </svg>
+                <span className="font-medium">Export</span>
+              </Button>
 
-              {/* Sign Out: Distinct Destructive Action */}
+              {/* Sign Out — inside the bar, danger tint on hover */}
               {user && onLogout && (
-                <Button
-                  onClick={onLogout}
-                  variant="outline"
-                  size="sm"
-                  className="h-11 border-white/20 bg-transparent text-white hover:bg-semantic-error-500 hover:border-semantic-error-500 transition-colors"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-4 w-4 mr-2"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
+                <>
+                  <div className="w-px h-5 bg-white/10 mx-0.5" />
+                  <Button
+                    onClick={onLogout}
+                    variant="glassDanger"
+                    className="gap-2 px-3 h-9"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H7a3 3 0 01-3-3V7a3 3 0 013-3h3a3 3 0 013 3v1"
-                    />
-                  </svg>
-                  <span className="hidden lg:inline">Sign Out</span>
-                </Button>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-4 w-4"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H7a3 3 0 01-3-3V7a3 3 0 013-3h3a3 3 0 013 3v1"
+                      />
+                    </svg>
+                    <span className="font-medium">Sign Out</span>
+                  </Button>
+                </>
               )}
+
             </div>
           </div>
         </div>

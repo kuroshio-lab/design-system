@@ -9,7 +9,7 @@ const meta: Meta<typeof Button> = {
   argTypes: {
     variant: {
       control: { type: "select" },
-      options: ["default", "edit", "delete", "addingObs", "actions", "signOut"],
+      options: ["default", "edit", "delete", "addingObs", "actions", "signOut", "glass", "glassDanger"],
     },
     size: {
       control: { type: "select" },
@@ -65,6 +65,34 @@ export const SignOut: Story = {
   },
 };
 
+export const Glass: Story = {
+  args: {
+    children: "Glass Button",
+    variant: "glass",
+  },
+  decorators: [
+    (Story) => (
+      <div style={{ background: "#003A63", padding: "2rem", borderRadius: "12px" }}>
+        <Story />
+      </div>
+    ),
+  ],
+};
+
+export const GlassDanger: Story = {
+  args: {
+    children: "Sign Out",
+    variant: "glassDanger",
+  },
+  decorators: [
+    (Story) => (
+      <div style={{ background: "#003A63", padding: "2rem", borderRadius: "12px" }}>
+        <Story />
+      </div>
+    ),
+  ],
+};
+
 export const Small: Story = {
   args: {
     children: "Small",
@@ -105,6 +133,12 @@ export const AllVariants: Story = {
           <Button variant="addingObs">Add Obs</Button>
           <Button variant="actions">Actions</Button>
           <Button variant="signOut">Sign Out</Button>
+          <div style={{ background: "#003A63", padding: "4px 8px", borderRadius: "8px" }}>
+            <Button variant="glass">Glass</Button>
+          </div>
+          <div style={{ background: "#003A63", padding: "4px 8px", borderRadius: "8px" }}>
+            <Button variant="glassDanger">Glass Danger</Button>
+          </div>
         </div>
       </div>
       <div>
