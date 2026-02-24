@@ -14,7 +14,6 @@ import {
   DialogHeader,
   DialogTitle,
   DialogDescription,
-  ScrollArea,
   Form,
   FormField as ShadcnFormField,
   FormControl,
@@ -344,7 +343,7 @@ export default function ObservationModal({
           <DialogTitle>{dialogTitle}</DialogTitle>
           <DialogDescription>{dialogDescription}</DialogDescription>
         </DialogHeader>
-        <ScrollArea className="flex-1 min-h-0 h-full">
+        <div className="flex-1 min-h-0 overflow-y-auto">
           <div className="p-6">
             {(mode === "add" || (mode === "edit" && observation)) && (
               // eslint-disable-next-line react/jsx-props-no-spreading
@@ -424,7 +423,7 @@ export default function ObservationModal({
               </Form>
             )}
           </div>
-        </ScrollArea>
+        </div>
       </DialogContent>
     </Dialog>
   );
