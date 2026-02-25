@@ -24,7 +24,9 @@ interface HeaderProps {
   user?: any;
   loading?: boolean;
   onLogout?: () => Promise<void>;
-  onSpeciesSearch: (query: string) => Promise<Array<{ speciesName: string; commonName: string }>>;
+  onSpeciesSearch: (
+    query: string,
+  ) => Promise<Array<{ speciesName: string; commonName: string }>>;
   UserRoleBadgeComponent?: React.ComponentType<any>;
   onExport?: () => void;
   /** Total number of the user's personal observations (for the export modal). */

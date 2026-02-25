@@ -178,7 +178,11 @@ export default function ExportConfirmModal({
 
             {/* Actions */}
             <div className="flex gap-3">
-              <Button variant="glassDanger" className="h-9 flex-1" onClick={onClose}>
+              <Button
+                variant="glassDanger"
+                className="h-9 flex-1"
+                onClick={onClose}
+              >
                 Cancel
               </Button>
               <Button

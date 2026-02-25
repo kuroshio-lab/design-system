@@ -80,7 +80,8 @@ export default function FilterModal({
     onClose();
   };
 
-  const hasValues = selectedSpecies !== null || minDate !== "" || maxDate !== "";
+  const hasValues =
+    selectedSpecies !== null || minDate !== "" || maxDate !== "";
 
   return ReactDOM.createPortal(
     <div className="fixed inset-0 z-[2000] flex items-center justify-center">

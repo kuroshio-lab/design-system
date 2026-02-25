@@ -49,8 +49,8 @@ export const Default: Story = {
     return (
       <div className="p-8 flex flex-col items-center gap-4">
         <p className="text-sm text-muted-foreground">
-          No active filters. Type 2+ characters in the species field to see
-          mock results.
+          No active filters. Type 2+ characters in the species field to see mock
+          results.
         </p>
         <Button variant="glass" onClick={() => setIsOpen(true)}>
           Open Filter Modal

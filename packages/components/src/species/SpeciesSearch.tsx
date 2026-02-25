@@ -193,9 +193,7 @@ export default function SpeciesSearch({
         id={id}
       />
       {isOpen && (
-        <div
-          className="absolute z-[9999] mt-1 w-full overflow-hidden rounded-xl border border-white/10 bg-brand-primary-900/95 shadow-2xl max-h-60 overflow-y-auto"
-        >
+        <div className="absolute z-[9999] mt-1 w-full overflow-hidden rounded-xl border border-white/10 bg-brand-primary-900/95 shadow-2xl max-h-60 overflow-y-auto">
           {isLoading && (
             <div className="p-4 text-sm text-white/50 text-center">
               Searching...
@@ -214,9 +212,7 @@ export default function SpeciesSearch({
                 type="button"
                 className={cn(
                   "w-full text-left px-4 py-2.5 text-sm focus:outline-none border-b border-white/5 last:border-0 transition-colors",
-                  selectedIndex === index
-                    ? "bg-white/10"
-                    : "hover:bg-white/10",
+                  selectedIndex === index ? "bg-white/10" : "hover:bg-white/10",
                 )}
                 onClick={() => handleSelect(species)}
                 onMouseEnter={() => setSelectedIndex(index)}
