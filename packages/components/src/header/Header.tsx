@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { Button } from "@kuroshio-lab/ui";
 import { cn } from "@kuroshio-lab/styles";
+import { ExportConfirmModal } from "../export-confirm-modal";
 
 interface HeaderProps {
   onApplyFilters: (filters: {
@@ -24,6 +25,9 @@ interface HeaderProps {
   onLogout?: () => Promise<void>;
   FilterModalComponent?: React.ComponentType<any>;
   UserRoleBadgeComponent?: React.ComponentType<any>;
+  onExport?: () => void;
+  /** Total number of the user's personal observations (for the export modal). */
+  observationCount?: number;
 }
 
 export default function Header({
@@ -34,8 +38,11 @@ export default function Header({
   onLogout,
   FilterModalComponent,
   UserRoleBadgeComponent,
+  onExport,
+  observationCount,
 }: HeaderProps) {
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
+  const [isExportModalOpen, setIsExportModalOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -192,8 +199,8 @@ export default function Header({
 
               {/* Export */}
               <Button
-                // eslint-disable-next-line no-alert
-                onClick={() => alert("Export functionality ready soon.")}
+                onClick={() => setIsExportModalOpen(true)}
+                disabled={!onExport}
                 variant="glass"
                 className="gap-2 px-3 h-9"
               >
@@ -253,6 +260,17 @@ export default function Header({
           onClose={() => setIsFilterModalOpen(false)}
           onApplyFilters={handleApplyFiltersAndCloseModal}
           initialFilters={initialFilters}
+        />
+      )}
+
+      {/* Export Confirm Modal */}
+      {onExport && (
+        <ExportConfirmModal
+          isOpen={isExportModalOpen}
+          onClose={() => setIsExportModalOpen(false)}
+          onConfirm={onExport}
+          observationCount={observationCount}
+          filters={initialFilters}
         />
       )}
     </header>
