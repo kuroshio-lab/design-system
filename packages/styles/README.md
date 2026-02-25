@@ -1,14 +1,6 @@
 # @kuroshio-lab/styles
 
-Shared styling utilities, design tokens, and Tailwind CSS configuration for Kuroshio Lab projects.
-
-## Features
-
-- 🎨 **Design Tokens** - Complete color palette with brand colors, neutrals, and semantics
-- 🌊 **Ocean-Inspired Colors** - Primary, accent, and gradient colors
-- 🔧 **Tailwind Configuration** - Ready-to-use theme extension
-- 📦 **Utility Functions** - Class name merging with `cn()`
-- 🎯 **TypeScript Support** - Full type safety for tokens
+Foundation layer of the Kuroshio Lab design system. Provides the `cn()` utility, design tokens, Tailwind CSS theme extensions, and PostCSS configuration consumed by `@kuroshio-lab/ui` and `@kuroshio-lab/components`.
 
 ## Installation
 
@@ -16,188 +8,218 @@ Shared styling utilities, design tokens, and Tailwind CSS configuration for Kuro
 npm install @kuroshio-lab/styles
 ```
 
-## Quick Start
+---
 
-### Using Tokens in TypeScript
+## Exports
 
-```typescript
-import { palette, theme, gradients } from "@kuroshio-lab/styles";
+The package exposes three entry points:
 
-const primaryColor = palette.primary[500]; // #0077BA
-const backgroundColor = palette.neutral["gray-100"]; // #F3F6F7
-const gradient = gradients["kerama-depth"];
+| Import path                     | Contents                           |
+| ------------------------------- | ---------------------------------- |
+| `@kuroshio-lab/styles`          | `cn()` utility + all design tokens |
+| `@kuroshio-lab/styles/tailwind` | Tailwind configuration object      |
+| `@kuroshio-lab/styles/postcss`  | PostCSS configuration object       |
+
+---
+
+## `cn()` utility
+
+A lightweight class-merging helper used across every component in the design system.
+
+```ts
+import { cn } from "@kuroshio-lab/styles";
+
+cn("base-class", isActive && "active", undefined, "another-class");
+// → "base-class active another-class"
 ```
 
-### Using in Tailwind CSS
+Accepts any number of `string | undefined | null | false` arguments. Falsy values are filtered out and the remaining strings are joined with spaces.
 
-```jsx
-function Card() {
-  return (
-    <div className="bg-primary-100 border border-neutral-300 rounded-md p-md">
-      <h2 className="text-primary-900">Heading</h2>
-      <p className="text-neutral-700">Content</p>
-    </div>
-  );
-}
-```
+---
 
-### Using Class Name Utility
+## Design tokens
 
-```typescript
-import { cn } from '@kuroshio-lab/styles';
-
-function Button({ isActive, disabled }) {
-  return (
-    <button
-      className={cn(
-        'px-md py-sm rounded-md',
-        isActive && 'bg-primary-500 text-white',
-        disabled && 'opacity-50 cursor-not-allowed'
-      )}
-    >
-      Click me
-    </button>
-  );
-}
-```
-
-## Color Palette
-
-### Brand Colors (Primary)
-
-Ocean-inspired primary colors from deep navy to bright aqua:
-
-```
-900: #003A63 (Navy)
-700: #005A8D (Deep Ocean)
-500: #0077BA (Ocean Blue) ← Default
-300: #21C6E3 (Aqua)
-100: #E8FAFF (Sky)
-```
-
-### Neutral Colors
-
-Carefully balanced grays:
-
-```
-900: #0D1B2A (Darkest)
-700: #1E2D3A (Dark)
-500: #A7B2B7 (Medium)
-300: #D7DFE2 (Light)
-100: #F3F6F7 (Lightest)
-White: #FFFFFF
-```
-
-### Semantic Colors
-
-Status and feedback colors:
-
-```
-Success: #30C39E (Eco Green)
-Warning: #FFCF5C (Warm Yellow)
-Error: #D64550 (Coral Red)
-```
-
-### Gradients
-
-Beautiful gradients for special effects:
-
-```
-Kerama Depth: Linear 135deg, Aqua → Ocean → Navy
-Shallow Reef: Linear 145deg, Light → Aqua
-Okinawa Dawn: Linear 140deg, Ocean → Coral
-```
-
-## Tokens API
-
-### Available Exports
-
-```typescript
+```ts
 import {
-  tokens, // All design tokens
-  palette, // Organized color palette
-  gradients, // Gradient definitions
-  radii, // Border radius values
-  spacing, // Spacing scale
-  opacity, // Opacity levels
-  theme, // Default theme colors
-  cn, // Class name utility
+  tokens,
+  palette,
+  gradients,
+  spacing,
+  radii,
+  opacity,
+  theme,
 } from "@kuroshio-lab/styles";
 ```
 
-### Tokens Structure
+For the full token reference see [TOKENS.md](./TOKENS.md).
 
-```typescript
-tokens.brand; // Primary colors
-tokens.neutral; // Gray colors
-tokens.accent; // Eco, coral, sand
-tokens.semantic; // Success, warning, error
-tokens.gradient; // Named gradients
-tokens.radii; // Border radius values
-tokens.spacing; // Spacing scale
-tokens.opacity; // Opacity levels
-```
+### Colors
 
-## Tailwind Integration
+**Brand (ocean blue)**
 
-### In your `tailwind.config.js`
+| Token                         | Value     | Name       |
+| ----------------------------- | --------- | ---------- |
+| `tokens.brand['primary-900']` | `#003A63` | Navy       |
+| `tokens.brand['primary-700']` | `#005A8D` | Deep Ocean |
+| `tokens.brand['primary-500']` | `#0077BA` | Ocean Blue |
+| `tokens.brand['primary-300']` | `#21C6E3` | Aqua       |
+| `tokens.brand['primary-100']` | `#E8FAFF` | Sky        |
 
-```javascript
-const kuroshioConfig = require("@kuroshio-lab/styles/tailwind");
+**Neutral grays**
+
+| Token                        | Value     |
+| ---------------------------- | --------- |
+| `tokens.neutral['gray-900']` | `#0D1B2A` |
+| `tokens.neutral['gray-700']` | `#1E2D3A` |
+| `tokens.neutral['gray-500']` | `#A7B2B7` |
+| `tokens.neutral['gray-300']` | `#D7DFE2` |
+| `tokens.neutral['gray-100']` | `#F3F6F7` |
+
+**Accent**
+
+| Token                         | Value                  |
+| ----------------------------- | ---------------------- |
+| `tokens.accent['eco-500']`    | `#30C39E` (reef green) |
+| `tokens.accent['coral-500']`  | `#FF6F59` (warm coral) |
+| `tokens.accent['sand-light']` | `#F5F2E9`              |
+
+**Semantic**
+
+| Token                            | Value     |
+| -------------------------------- | --------- |
+| `tokens.semantic['success-500']` | `#30C39E` |
+| `tokens.semantic['success-100']` | `#E6F7F3` |
+| `tokens.semantic['warning-500']` | `#FFCF5C` |
+| `tokens.semantic['warning-100']` | `#FFF6E1` |
+| `tokens.semantic['error-500']`   | `#D64550` |
+| `tokens.semantic['error-100']`   | `#FDECEE` |
+
+### Gradients
+
+| Name           | Direction | Stops                    |
+| -------------- | --------- | ------------------------ |
+| `kerama-depth` | 135deg    | Aqua → Ocean Blue → Navy |
+| `shallow-reef` | 145deg    | Sky → Aqua               |
+| `okinawa-dawn` | 140deg    | Ocean Blue → Coral       |
+
+### Spacing, radii, opacity
+
+| Category  | Scale                                           |
+| --------- | ----------------------------------------------- |
+| `spacing` | `xs: 4px` · `sm: 8px` · `md: 16px` · `lg: 32px` |
+| `radii`   | `sm: 4px` · `md: 8px` · `lg: 16px`              |
+| `opacity` | `light: 0.05` · `medium: 0.15` · `strong: 0.3`  |
+
+---
+
+## Tailwind configuration
+
+Extend your project's Tailwind config with the shared theme:
+
+```js
+// tailwind.config.js
+const sharedConfig = require("@kuroshio-lab/styles/tailwind");
 
 module.exports = {
-  content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
-    "node_modules/@kuroshio-lab/ui/dist/**/*.js",
-  ],
+  content: ["./src/**/*.{ts,tsx}"],
   theme: {
-    extend: kuroshioConfig.theme.extend,
+    extend: sharedConfig.theme.extend,
   },
-  plugins: kuroshioConfig.plugins,
+  plugins: sharedConfig.plugins,
 };
 ```
 
-### Using in CSS
+Or use `presets` to inherit the full config:
 
-```tailwindcss
-/* Colors */
-.text-primary-900 { color: #003A63; }
-.bg-primary-500 { background-color: #0077BA; }
-.border-neutral-300 { border-color: #D7DFE2; }
+```js
+const sharedConfig = require("@kuroshio-lab/styles/tailwind");
 
-/* Semantics */
-.text-success-500 { color: #30C39E; }
-.bg-warning-100 { background-color: #FFF6E1; }
-
-/* Gradients */
-.bg-gradient-kerama { background: linear-gradient(...); }
-
-/* Spacing */
-.p-md { padding: 16px; }
-.gap-lg { gap: 32px; }
-
-/* Border Radius */
-.rounded-md { border-radius: 8px; }
-
-/* Opacity */
-.opacity-medium { opacity: 0.15; }
+module.exports = {
+  presets: [sharedConfig],
+  content: ["./src/**/*.{ts,tsx}"],
+};
 ```
 
-## Documentation
+### Theme extensions
 
-- [Design Tokens Reference](./TOKENS.md) - Detailed token documentation
-- [Main Design System README](../README.md)
-- [Package Details](../PACKAGES.md)
+**Colors** — available as Tailwind utilities (`bg-`, `text-`, `border-`, etc.)
 
-## Contributing
+| Utility                                                 | Tokens               |
+| ------------------------------------------------------- | -------------------- |
+| `brand-primary-{100,300,500,700,900}`                   | Brand blue scale     |
+| `neutral-gray-{100,300,500,700,900}`                    | Gray scale           |
+| `accent-eco`                                            | `#30C39E`            |
+| `accent-coral`                                          | `#FF6F59`            |
+| `accent-sand`                                           | `#F5F2E9`            |
+| `semantic-success-{500,100}`                            | Green                |
+| `semantic-warning-{500,100}`                            | Yellow               |
+| `semantic-error-{500,100}`                              | Red                  |
+| `ocean-200`                                             | `#E8FAFF`            |
+| Short aliases (`primary`, `eco`, `coral`, `success`, …) | Legacy compatibility |
 
-To add new tokens or modify existing ones:
+**Background gradients**
 
-1. Update `packages/styles/src/tokens.ts`
-2. Update `packages/styles/tailwind.config.js`
-3. Document changes in `TOKENS.md`
-4. Submit a pull request
+```
+bg-gradient-kerama   bg-gradient-reef   bg-gradient-dawn   bg-kerama-depth
+```
 
-## License
+**Spacing** — `xs`, `sm`, `md`, `lg` added to spacing scale
 
-MIT - See [LICENSE](../../LICENSE) for details
+**Border radius** — `sm`, `md`, `lg` added to radius scale
+
+**Opacity** — `light`, `medium`, `strong` added to opacity scale
+
+**Animations** — `accordion-down` and `accordion-up` keyframes for Radix UI accordion support
+
+### Plugins
+
+- [`tailwindcss-animate`](https://github.com/jamiebuilds/tailwindcss-animate) — animation utilities
+
+---
+
+## PostCSS configuration
+
+```js
+// postcss.config.js
+module.exports = require("@kuroshio-lab/styles/postcss");
+```
+
+The exported config runs Tailwind CSS and Autoprefixer:
+
+```js
+{
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  }
+}
+```
+
+---
+
+## Package dependency position
+
+`@kuroshio-lab/styles` has no dependencies on other design system packages. It is the base layer:
+
+```
+@kuroshio-lab/styles
+        ↑
+@kuroshio-lab/ui
+        ↑
+@kuroshio-lab/components
+```
+
+---
+
+## Development
+
+```bash
+# From repo root
+npm run dev              # Watch all packages
+cd packages/styles
+npm run build            # Build this package only (runs tsc)
+```
+
+The compiled output in `dist/` exports `cn()` and all tokens. `tailwind.config.js` and `postcss.config.js` are published as-is (not compiled) so consuming projects can reference them directly as configuration files.
+
+See the root [DEVELOPMENT.md](../../DEVELOPMENT.md) for full monorepo setup instructions.

@@ -40,8 +40,11 @@ kuroshio-design-system/
 │   │   ├── src/
 │   │   │   ├── observation/
 │   │   │   ├── species/
-│   │   │   ├── map/
-│   │   │   ├── forms/
+│   │   │   ├── header/
+│   │   │   ├── filter-modal/
+│   │   │   ├── export-confirm-modal/
+│   │   │   ├── loaders/
+│   │   │   ├── user/
 │   │   │   └── index.ts
 │   │   ├── package.json
 │   │   └── tsconfig.json
@@ -59,7 +62,6 @@ kuroshio-design-system/
 ├── package.json                # Root package.json
 ├── README.md                   # Project overview
 ├── CONTRIBUTING.md             # Contribution guide
-├── MIGRATION_GUIDE.md          # Migration instructions
 └── LICENSE                     # MIT License
 ```
 
@@ -93,14 +95,14 @@ npm run clean
 # Work on a specific package
 cd packages/ui
 
-npm run build      # Build only @kuroshio/ui
-npm run dev        # Watch @kuroshio/ui
-npm run type-check # Type check @kuroshio/ui
+npm run build      # Build only @kuroshio-lab/ui
+npm run dev        # Watch @kuroshio-lab/ui
+npm run type-check # Type check @kuroshio-lab/ui
 ```
 
 ## Adding a New Component
 
-### Adding to @kuroshio/ui
+### Adding to @kuroshio-lab/ui
 
 1. **Create component file**
 
@@ -110,7 +112,7 @@ import * as React from "react"
 import * as AccordionPrimitive from "@radix-ui/react-accordion"
 import { ChevronDown } from "lucide-react"
 
-import { cn } from "@kuroshio/styles"
+import { cn } from "@kuroshio-lab/styles"
 
 const Accordion = AccordionPrimitive.Root
 
@@ -177,7 +179,7 @@ export * from './accordion'
 }
 ```
 
-### Adding to @kuroshio/components
+### Adding to @kuroshio-lab/components
 
 1. **Create component directory and file**
 
@@ -235,7 +237,7 @@ cd packages/ui
 npm link
 
 # In consumer project (e.g., marine-species-tracker)
-npm link @kuroshio/ui
+npm link @kuroshio-lab/ui
 ```
 
 Or use the file: protocol in package.json:
@@ -243,7 +245,7 @@ Or use the file: protocol in package.json:
 ```json
 {
   "dependencies": {
-    "@kuroshio/ui": "file:../kuroshio-design-system/packages/ui"
+    "@kuroshio-lab/ui": "file:../kuroshio-design-system/packages/ui"
   }
 }
 ```
@@ -281,11 +283,17 @@ npm run lint
 
 3. **Publish to npm**
 
+Use the release script, which handles version bumping, git tagging, and publish order automatically:
+
 ```bash
-npm publish
-cd packages/ui && npm publish
-cd packages/components && npm publish
-cd packages/styles && npm publish
+./scripts/release.sh
+```
+
+Or tag manually to trigger the GitHub Actions publish workflow:
+
+```bash
+git tag v0.3.0
+git push origin main --tags
 ```
 
 ## Best Practices
