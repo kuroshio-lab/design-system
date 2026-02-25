@@ -13,7 +13,7 @@ import {
   spacing,
   opacity,
   theme,
-} from "@kuroshio/styles";
+} from "@kuroshio-lab/styles";
 ```
 
 ## Colors
@@ -24,7 +24,7 @@ Deep ocean-inspired primary colors from dark navy to bright aqua.
 
 ```typescript
 // JavaScript
-import { palette } from "@kuroshio/styles";
+import { palette } from "@kuroshio-lab/styles";
 
 const primaryColor = palette.primary[500]; // #0077BA
 ```
@@ -47,7 +47,7 @@ const primaryColor = palette.primary[500]; // #0077BA
 Carefully balanced grays for text, backgrounds, and borders.
 
 ```typescript
-import { palette } from "@kuroshio/styles";
+import { palette } from "@kuroshio-lab/styles";
 
 const textColor = palette.neutral["gray-900"]; // #0D1B2A
 const backgroundColor = palette.neutral["gray-100"]; // #F3F6F7
@@ -67,7 +67,7 @@ const backgroundColor = palette.neutral["gray-100"]; // #F3F6F7
 Eco-friendly and coastal accents.
 
 ```typescript
-import { palette } from "@kuroshio/styles";
+import { palette } from "@kuroshio-lab/styles";
 
 const ecoColor = palette.accent["eco-500"]; // #30C39E
 const coralColor = palette.accent["coral-500"]; // #FF6F59
@@ -84,7 +84,7 @@ const coralColor = palette.accent["coral-500"]; // #FF6F59
 Functional colors for status and feedback.
 
 ```typescript
-import { palette } from "@kuroshio/styles";
+import { palette } from "@kuroshio-lab/styles";
 
 const success = palette.success[500]; // #30C39E
 const warning = palette.warning[500]; // #FFCF5C
@@ -111,7 +111,7 @@ const error = palette.error[500]; // #D64550
 Beautiful gradients inspired by ocean landscapes.
 
 ```typescript
-import { gradients } from "@kuroshio/styles";
+import { gradients } from "@kuroshio-lab/styles";
 
 const gradient = gradients["kerama-depth"];
 // "linear-gradient(135deg, #21C6E3 0%, #0077BA 60%, #003A63 100%)"
@@ -156,7 +156,7 @@ const gradient = gradients["kerama-depth"];
 Consistent spacing scale based on 4px base unit.
 
 ```typescript
-import { spacing } from "@kuroshio/styles";
+import { spacing } from "@kuroshio-lab/styles";
 
 const padding = spacing.md; // "16px"
 ```
@@ -178,7 +178,7 @@ const padding = spacing.md; // "16px"
 Rounded corner values for consistency.
 
 ```typescript
-import { radii } from "@kuroshio/styles";
+import { radii } from "@kuroshio-lab/styles";
 
 const rounded = radii.md; // "8px"
 ```
@@ -201,7 +201,7 @@ const rounded = radii.md; // "8px"
 Opacity levels for layering and transparency.
 
 ```typescript
-import { opacity } from "@kuroshio/styles";
+import { opacity } from "@kuroshio-lab/styles";
 
 const lightOpacity = opacity.light; // 0.05
 const strongOpacity = opacity.strong; // 0.3
@@ -218,7 +218,7 @@ const strongOpacity = opacity.strong; // 0.3
 ### TypeScript
 
 ```typescript
-import { tokens, palette, theme } from "@kuroshio/styles";
+import { tokens, palette, theme } from "@kuroshio-lab/styles";
 
 // Use theme for component defaults
 const buttonColor = theme.colors.primary; // #0077BA
@@ -234,7 +234,7 @@ const border = tokens.radii.md;
 ### CSS-in-JS
 
 ```typescript
-import { palette, gradients } from "@kuroshio/styles";
+import { palette, gradients } from "@kuroshio-lab/styles";
 
 const styles = {
   button: {
@@ -334,7 +334,7 @@ module.exports = {
 Or in TypeScript:
 
 ```typescript
-import { palette } from "@kuroshio/styles";
+import { palette } from "@kuroshio-lab/styles";
 
 // Extend palette
 const customTheme = {
