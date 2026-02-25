@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Button } from "@kuroshio-lab/ui";
 import { cn } from "@kuroshio-lab/styles";
 import { ExportConfirmModal } from "../export-confirm-modal";
+import { FilterModal, type ActiveFilters } from "../filter-modal";
 
 interface HeaderProps {
   onApplyFilters: (filters: {
@@ -23,7 +24,7 @@ interface HeaderProps {
   user?: any;
   loading?: boolean;
   onLogout?: () => Promise<void>;
-  FilterModalComponent?: React.ComponentType<any>;
+  onSpeciesSearch: (query: string) => Promise<Array<{ speciesName: string; commonName: string }>>;
   UserRoleBadgeComponent?: React.ComponentType<any>;
   onExport?: () => void;
   /** Total number of the user's personal observations (for the export modal). */
@@ -36,7 +37,7 @@ export default function Header({
   user,
   loading = false,
   onLogout,
-  FilterModalComponent,
+  onSpeciesSearch,
   UserRoleBadgeComponent,
   onExport,
   observationCount,
@@ -53,12 +54,7 @@ export default function Header({
     return <div className="h-28 w-full bg-brand-primary-900" />;
   }
 
-  const handleApplyFiltersAndCloseModal = (filters: {
-    speciesName: string | null;
-    commonName: string | null;
-    minDate: string | null;
-    maxDate: string | null;
-  }) => {
+  const handleApplyFiltersAndCloseModal = (filters: ActiveFilters) => {
     onApplyFilters(filters);
     setIsFilterModalOpen(false);
   };
@@ -253,15 +249,14 @@ export default function Header({
         </div>
       </nav>
 
-      {/* Reusable Filter Modal */}
-      {FilterModalComponent && (
-        <FilterModalComponent
-          isOpen={isFilterModalOpen}
-          onClose={() => setIsFilterModalOpen(false)}
-          onApplyFilters={handleApplyFiltersAndCloseModal}
-          initialFilters={initialFilters}
-        />
-      )}
+      {/* Filter Modal */}
+      <FilterModal
+        isOpen={isFilterModalOpen}
+        onClose={() => setIsFilterModalOpen(false)}
+        onApplyFilters={handleApplyFiltersAndCloseModal}
+        initialFilters={initialFilters}
+        onSearch={onSpeciesSearch}
+      />
 
       {/* Export Confirm Modal */}
       {onExport && (
