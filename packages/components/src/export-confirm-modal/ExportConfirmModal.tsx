@@ -25,7 +25,9 @@ export interface ExportConfirmModalProps {
 function FilterBadge({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex items-center gap-2 rounded-lg bg-white/5 px-3 py-1.5">
-      <span className="shrink-0 text-xs text-brand-primary-300/60">{label}</span>
+      <span className="shrink-0 text-xs text-brand-primary-300/60">
+        {label}
+      </span>
       <span className="truncate text-xs font-medium text-brand-primary-100">
         {value}
       </span>
@@ -43,8 +45,12 @@ export default function ExportConfirmModal({
   if (!isOpen || typeof document === "undefined") return null;
 
   const activeFilterEntries = [
-    filters.speciesName ? { label: "Species", value: filters.speciesName } : null,
-    filters.commonName ? { label: "Common name", value: filters.commonName } : null,
+    filters.speciesName
+      ? { label: "Species", value: filters.speciesName }
+      : null,
+    filters.commonName
+      ? { label: "Common name", value: filters.commonName }
+      : null,
     filters.minDate ? { label: "From", value: filters.minDate } : null,
     filters.maxDate ? { label: "Until", value: filters.maxDate } : null,
   ].filter(Boolean) as { label: string; value: string }[];
@@ -120,7 +126,9 @@ export default function ExportConfirmModal({
                 ) : (
                   <>
                     <div className="mx-auto mb-1 h-8 w-16 animate-pulse rounded bg-white/10" />
-                    <p className="text-xs text-brand-primary-100/50">loading…</p>
+                    <p className="text-xs text-brand-primary-100/50">
+                      loading…
+                    </p>
                   </>
                 )}
               </div>
@@ -137,7 +145,11 @@ export default function ExportConfirmModal({
                 </div>
                 <div className="space-y-1.5">
                   {activeFilterEntries.map((f) => (
-                    <FilterBadge key={f.label} label={f.label} value={f.value} />
+                    <FilterBadge
+                      key={f.label}
+                      label={f.label}
+                      value={f.value}
+                    />
                   ))}
                 </div>
               </div>
@@ -166,11 +178,7 @@ export default function ExportConfirmModal({
 
             {/* Actions */}
             <div className="flex gap-3">
-              <Button
-                variant="glass"
-                className="h-9 flex-1"
-                onClick={onClose}
-              >
+              <Button variant="glass" className="h-9 flex-1" onClick={onClose}>
                 Cancel
               </Button>
               <Button
