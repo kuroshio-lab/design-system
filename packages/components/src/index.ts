@@ -22,6 +22,13 @@ export {
   type ExportConfirmModalProps,
 } from "./export-confirm-modal";
 
+// Filter modal
+export {
+  FilterModal,
+  type FilterModalProps,
+  type ActiveFilters,
+} from "./filter-modal";
+
 // Loaders
 export { Loader, GlobalLoader } from "./loaders";
 

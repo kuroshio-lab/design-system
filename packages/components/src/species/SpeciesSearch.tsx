@@ -186,18 +186,21 @@ export default function SpeciesSearch({
         }}
         disabled={disabled}
         placeholder={placeholder}
-        className={cn(error && "border-red-500")}
+        className={cn(
+          "border-white/10 bg-white/5 text-white placeholder:text-white/30 focus-visible:ring-brand-primary-400/30",
+          error && "border-red-400",
+        )}
         id={id}
       />
       {isOpen && (
-        <div className="absolute z-[9999] mt-1 w-full rounded-md border bg-white shadow-lg max-h-60 overflow-auto">
+        <div className="absolute z-[9999] mt-1 w-full overflow-hidden rounded-xl border border-white/10 bg-brand-primary-900/95 shadow-2xl max-h-60 overflow-y-auto">
           {isLoading && (
-            <div className="p-4 text-sm text-gray-500 text-center">
+            <div className="p-4 text-sm text-white/50 text-center">
               Searching...
             </div>
           )}
           {!isLoading && results.length === 0 && (
-            <div className="p-4 text-sm text-gray-500 text-center">
+            <div className="p-4 text-sm text-white/50 text-center">
               No species found
             </div>
           )}
@@ -208,15 +211,17 @@ export default function SpeciesSearch({
                 key={species.speciesName}
                 type="button"
                 className={cn(
-                  "w-full text-left px-4 py-2 text-sm hover:bg-gray-100 focus:bg-gray-100 focus:outline-none",
-                  selectedIndex === index && "bg-gray-100",
+                  "w-full text-left px-4 py-2.5 text-sm focus:outline-none border-b border-white/5 last:border-0 transition-colors",
+                  selectedIndex === index ? "bg-white/10" : "hover:bg-white/10",
                 )}
                 onClick={() => handleSelect(species)}
                 onMouseEnter={() => setSelectedIndex(index)}
               >
-                <div className="font-medium">{species.speciesName}</div>
+                <div className="font-medium text-white">
+                  {species.speciesName}
+                </div>
                 {species.commonName && (
-                  <div className="text-xs text-gray-500">
+                  <div className="text-xs text-white/50 mt-0.5">
                     {species.commonName}
                   </div>
                 )}
