@@ -37,28 +37,28 @@ import { Button } from '@kuroshio-lab/ui/button';
 
 Extends `React.ButtonHTMLAttributes<HTMLButtonElement>`.
 
-| Prop | Type | Default |
-|---|---|---|
-| `variant` | see below | `"default"` |
-| `size` | `"default" \| "sm" \| "lg" \| "icon"` | `"default"` |
-| `asChild` | `boolean` | `false` |
+| Prop      | Type                                  | Default     |
+| --------- | ------------------------------------- | ----------- |
+| `variant` | see below                             | `"default"` |
+| `size`    | `"default" \| "sm" \| "lg" \| "icon"` | `"default"` |
+| `asChild` | `boolean`                             | `false`     |
 
 **Variants**
 
-| Variant | Description |
-|---|---|
-| `default` | Blue primary |
-| `destructive` | Red danger |
-| `outline` | Border, no fill |
-| `secondary` | Gray secondary |
-| `ghost` | No background, accent on hover |
-| `link` | Text with underline |
-| `edit` | Brand cyan-blue with gradient hover |
-| `delete` | Coral with cyan gradient hover |
-| `addingObs` | Ocean-depth multi-colour gradient |
-| `actions` | Dark primary |
-| `signOut` | Neutral semi-transparent |
-| `glass` | Frosted glass (white/10 bg) |
+| Variant       | Description                              |
+| ------------- | ---------------------------------------- |
+| `default`     | Blue primary                             |
+| `destructive` | Red danger                               |
+| `outline`     | Border, no fill                          |
+| `secondary`   | Gray secondary                           |
+| `ghost`       | No background, accent on hover           |
+| `link`        | Text with underline                      |
+| `edit`        | Brand cyan-blue with gradient hover      |
+| `delete`      | Coral with cyan gradient hover           |
+| `addingObs`   | Ocean-depth multi-colour gradient        |
+| `actions`     | Dark primary                             |
+| `signOut`     | Neutral semi-transparent                 |
+| `glass`       | Frosted glass (white/10 bg)              |
 | `glassDanger` | Frosted glass with coral danger on hover |
 
 **Exports**: `Button`, `buttonVariants`
@@ -70,17 +70,17 @@ Extends `React.ButtonHTMLAttributes<HTMLButtonElement>`.
 Inline label for status or category display.
 
 ```tsx
-import { Badge } from '@kuroshio-lab/ui/badge';
+import { Badge } from "@kuroshio-lab/ui/badge";
 
-<Badge variant="secondary">Pending</Badge>
+<Badge variant="secondary">Pending</Badge>;
 ```
 
 **Props**
 
 Extends `React.HTMLAttributes<HTMLDivElement>`.
 
-| Prop | Type | Default |
-|---|---|---|
+| Prop      | Type                                                     | Default     |
+| --------- | -------------------------------------------------------- | ----------- |
 | `variant` | `"default" \| "secondary" \| "destructive" \| "outline"` | `"default"` |
 
 **Exports**: `Badge`, `badgeVariants`
@@ -99,7 +99,7 @@ import {
   CardDescription,
   CardContent,
   CardFooter,
-} from '@kuroshio-lab/ui/card';
+} from "@kuroshio-lab/ui/card";
 
 <Card>
   <CardHeader>
@@ -108,7 +108,7 @@ import {
   </CardHeader>
   <CardContent>Content goes here.</CardContent>
   <CardFooter>Footer</CardFooter>
-</Card>
+</Card>;
 ```
 
 All sub-components extend `React.HTMLAttributes<HTMLDivElement>` and support refs.
@@ -131,7 +131,7 @@ import {
   DialogDescription,
   DialogFooter,
   DialogClose,
-} from '@kuroshio-lab/ui/dialog';
+} from "@kuroshio-lab/ui/dialog";
 
 <Dialog>
   <DialogTrigger asChild>
@@ -149,7 +149,7 @@ import {
       </DialogClose>
     </DialogFooter>
   </DialogContent>
-</Dialog>
+</Dialog>;
 ```
 
 **Exports**: `Dialog`, `DialogPortal`, `DialogOverlay`, `DialogTrigger`, `DialogClose`, `DialogContent`, `DialogHeader`, `DialogFooter`, `DialogTitle`, `DialogDescription`
@@ -161,7 +161,7 @@ import {
 Type-safe form primitives built on `react-hook-form` with automatic ARIA wiring and error display.
 
 ```tsx
-import { useForm } from 'react-hook-form';
+import { useForm } from "react-hook-form";
 import {
   Form,
   FormField,
@@ -170,8 +170,8 @@ import {
   FormControl,
   FormDescription,
   FormMessage,
-} from '@kuroshio-lab/ui/form';
-import { Input } from '@kuroshio-lab/ui/input';
+} from "@kuroshio-lab/ui/form";
+import { Input } from "@kuroshio-lab/ui/input";
 
 const form = useForm<{ email: string }>();
 
@@ -192,7 +192,7 @@ const form = useForm<{ email: string }>();
       )}
     />
   </form>
-</Form>
+</Form>;
 ```
 
 `FormControl` automatically sets `id`, `aria-describedby`, and `aria-invalid` from the field context. `FormMessage` renders the field error or falls back to `children`.
@@ -206,9 +206,9 @@ const form = useForm<{ email: string }>();
 Styled native `<input>` element.
 
 ```tsx
-import { Input } from '@kuroshio-lab/ui/input';
+import { Input } from "@kuroshio-lab/ui/input";
 
-<Input type="email" placeholder="you@example.com" />
+<Input type="email" placeholder="you@example.com" />;
 ```
 
 Extends `React.ComponentProps<"input">`. Supports refs.
@@ -222,9 +222,9 @@ Extends `React.ComponentProps<"input">`. Supports refs.
 Accessible label built on `@radix-ui/react-label`. Automatically pairs with disabled peer elements.
 
 ```tsx
-import { Label } from '@kuroshio-lab/ui/label';
+import { Label } from "@kuroshio-lab/ui/label";
 
-<Label htmlFor="email">Email address</Label>
+<Label htmlFor="email">Email address</Label>;
 ```
 
 Extends `React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root>`. Supports refs.
@@ -247,7 +247,7 @@ import {
   SelectLabel,
   SelectItem,
   SelectSeparator,
-} from '@kuroshio-lab/ui/select';
+} from "@kuroshio-lab/ui/select";
 
 <Select onValueChange={(val) => console.log(val)}>
   <SelectTrigger>
@@ -262,7 +262,7 @@ import {
     <SelectSeparator />
     <SelectItem value="other">Other</SelectItem>
   </SelectContent>
-</Select>
+</Select>;
 ```
 
 **Exports**: `Select`, `SelectGroup`, `SelectValue`, `SelectTrigger`, `SelectContent`, `SelectLabel`, `SelectItem`, `SelectSeparator`, `SelectScrollUpButton`, `SelectScrollDownButton`
@@ -274,12 +274,12 @@ import {
 Scrollable container with a custom scrollbar, built on `@radix-ui/react-scroll-area`.
 
 ```tsx
-import { ScrollArea, ScrollBar } from '@kuroshio-lab/ui/scroll-area';
+import { ScrollArea, ScrollBar } from "@kuroshio-lab/ui/scroll-area";
 
 <ScrollArea className="h-64 w-full">
   <div>{/* long content */}</div>
   <ScrollBar orientation="vertical" />
-</ScrollArea>
+</ScrollArea>;
 ```
 
 `ScrollArea` renders a vertical `ScrollBar` by default. Add a second `ScrollBar` with `orientation="horizontal"` for two-axis scrolling.
@@ -301,10 +301,10 @@ import { Separator } from '@kuroshio-lab/ui/separator';
 
 Extends `React.ComponentPropsWithoutRef<typeof SeparatorPrimitive.Root>`. Supports refs.
 
-| Prop | Type | Default |
-|---|---|---|
+| Prop          | Type                         | Default        |
+| ------------- | ---------------------------- | -------------- |
 | `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` |
-| `decorative` | `boolean` | `true` |
+| `decorative`  | `boolean`                    | `true`         |
 
 **Exports**: `Separator`
 
@@ -315,9 +315,9 @@ Extends `React.ComponentPropsWithoutRef<typeof SeparatorPrimitive.Root>`. Suppor
 Styled native `<textarea>` element.
 
 ```tsx
-import { Textarea } from '@kuroshio-lab/ui/textarea';
+import { Textarea } from "@kuroshio-lab/ui/textarea";
 
-<Textarea placeholder="Write something…" rows={4} />
+<Textarea placeholder="Write something…" rows={4} />;
 ```
 
 Extends `React.ComponentProps<"textarea">`. Supports refs.
